@@ -28,3 +28,12 @@ Se construirá en Pseint un algoritmo en pseudocódigo que simule un sistema par
 ## 4. Solución paso a paso
 - `cupon` se define como **Cadena** (_Sólo es válido si es exactamente "DESCUENTO10"_)
 - `valorBruto`, `valorConDescuento`, `iva`, `valorConIva`, `valorTotal`, `valorTotalRedond`,`cant_`, `descu_` se definen como **Real**
+
+```psc
+Escribir "Ingrese su producto:"
+Leer nombre_
+Escribir "Ingrese precio:"
+Leer valorBruto
+Escribir "Ingrese cupón de descuento:"
+Leer cupon
+```
