@@ -18,16 +18,26 @@ Se construirá en Pseint un algoritmo en pseudocódigo que simule un sistema par
 
 ## 3. Requerimientos
 - Leer el precio original del producto.
-- Aplicar un descuento al producto si es aplicable (por ejemplo, si el cliente tiene un cupón de descuento).
-- Aplicar impuestos al producto (por ejemplo, el IVA u otros impuestos).
+- Aplicar un descuento al producto si es aplicable (por ejemplo, si el cliente tiene un cupón de descuento que ccorresponde a un 10%).
+- Aplicar impuestos al producto (IVA de un 12%).
 - Si el cliente compra más de un artículo, aplicar un descuento por cantidad.
 - Calcular el costo de envío basado en el destino y el peso del paquete.
 - Calcular el costo final del producto sumando el precio con descuento, impuestos, descuento por cantidad y costo de envío.
 - Mostrar el costo final del producto, desglosando los diferentes componentes (descuentos, impuestos, descuento por cantidad y costo de envío).
 
 ## 4. Solución paso a paso
-- `cupon` se define como **Cadena** (_Sólo es válido si es exactamente "DESCUENTO10"_)
+1. Se declaran las variables a utilizar
+   
+- `cupon` se define como **Cadena** (_Sólo es válido si es ingresada exactamente como: "DESCUENTO10"_)
 - `valorBruto`, `valorConDescuento`, `iva`, `valorConIva`, `valorTotal`, `valorTotalRedond`,`cant_`, `descu_` se definen como **Real**
+- Definimos la **Dimension** `calc_envio[4,4]` para la matriz que nos entregará el costo de envío según el peso y el destino.
+
+```psc
+Definir cupon Como cadena
+Definir valorBruto,valorConDescuento,iva, valorConIva,valorTotal,valorTotalRedond,cant_,descu_ Como real
+Dimension calc_envio[4,4]
+```
+2. Se solicita al usuario que ingrese la información de nombre del producto, previo e ingresar el cupón.
 
 ```psc
 Escribir "Ingrese su producto:"
@@ -37,3 +47,24 @@ Leer valorBruto
 Escribir "Ingrese cupón de descuento:"
 Leer cupon
 ```
+
+3. El programa verifica si el cupón es válido para aplicar el descuento de 10%
+   
+```psc
+si cupon = "DESCUENTO10" Entonces
+		Escribir "Descuento válido"
+		valorConDescuento=valorBruto*0.9
+	SiNo
+		Escribir "Cupón no válido"
+		valorConDescuento=valorBruto
+	FinSi
+
+## 4.  Habiendo o no aplicado e descuento, a continuación el programa aplica el impuesto de 12% correspondiente a IVA.
+
+
+```psc
+iva=0.12
+	valorConIva=valorConDescuento+(valorConDescuento*iva)
+```
+
+
