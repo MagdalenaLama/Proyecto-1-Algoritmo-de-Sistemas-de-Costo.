@@ -116,4 +116,46 @@ y lo almacena en la variable `peso`
 ```psc
 peso<-2*cant_
 ```
-12. 
+12. El siguente paso en el programa es asignar las variables `i` y `j` según  `peso` y `region`
+```psc
+si peso<=5 Entonces
+		i=1	
+	FinSi
+	si	peso>=6 y peso<=10 Entonces
+		i=2
+	FinSi
+	si peso>=11 y peso<=15 Entonces
+		i=3
+	FinSi
+	si peso>=16 Entonces
+		i=4
+	FinSi
+	
+	
+	si region=1 Entonces
+		j=1
+	FinSi
+	si region=2 Entonces
+		j=2
+	FinSi
+	si region=3 Entonces
+		j=3
+	FinSi
+	si region=4 Entonces
+		j=4
+	FinSi
+``` 
+13. Por último, el programa nos entrega el desglose de la compra mostrando el descuento por cupón (si es que aplica), detllad del IVA, descuento por cantidad, costo de envío y costo total.
+```psc
+	Escribir "==================================="
+	Escribir "Desglose de su compra:"
+	si cupon = "DESCUENTO10" Entonces
+		Escribir "Descuento de 10% por cupón:"," ","$", valorBruto*0.1*cant_;		
+	FinSi
+	Escribir "IVA (12%):", " ","$", valorConDescuento*iva*cant_
+	Escribir "Descuento de:",descu_*100,"% por llevar", " ", cant_, "  ", "unidades:", "  ","$" valorConIva*descu_*cant_
+	Escribir "Costo de envío:","$", calc_envio[i,j];
+	Escribir "Costo total:", "$",calc_envio[i,j]+valorTotalRedond
+	
+	
+```
